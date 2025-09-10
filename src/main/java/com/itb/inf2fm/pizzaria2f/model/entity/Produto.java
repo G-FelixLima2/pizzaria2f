@@ -1,13 +1,26 @@
 package com.itb.inf2fm.pizzaria2f.model.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="Produto") // Quando o nome da classe for igual ao nome da tabela, o @Table é facultativo
+
 public class Produto {
 
+    @Id // PK
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-INCREMENTO SEQUÊNCIA 1 e 1
     private Long id;
+    @Column(length = 45, nullable = false) // lenght : tamnaho Max, nullable : false (NOT NULL) true: (NULL)
     private String nome;
+    @Column(length = 45, nullable = true)
     private String tipo;
+    @Column(length = 255, nullable = true)
     private String descricao;
+    @Column(columnDefinition = "Decimal(5,2)", nullable = true)
     private double valorCompra;
+    @Column(columnDefinition = "Decimal(5,2)", nullable = true)
     private double valorVenda;
+    @Column( nullable = true)
     private int quantidadeEstoque;
     private boolean codStatus;
 
