@@ -3,10 +3,17 @@ package com.itb.inf2fm.pizzaria2f.model.entity;
 import javax.xml.crypto.Data;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "Pedido")
 public class Pedido {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(columnDefinition = "Decimal(5,2)", nullable = false)
     private double valorPedido;
+    @Column()
     private LocalDateTime dataHoraPedido;
     private LocalDateTime dataHoraEntrega;
     private String status;
