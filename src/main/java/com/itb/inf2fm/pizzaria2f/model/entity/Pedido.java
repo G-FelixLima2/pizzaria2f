@@ -13,7 +13,6 @@ public class Pedido {
     private Long id;
     @Column(columnDefinition = "Decimal(5,2)", nullable = false)
     private double valorPedido;
-    @Column()
     private LocalDateTime dataHoraPedido;
     private LocalDateTime dataHoraEntrega;
     private String status;
