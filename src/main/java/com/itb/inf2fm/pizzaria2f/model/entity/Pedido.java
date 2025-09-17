@@ -15,6 +15,7 @@ public class Pedido {
     private double valorPedido;
     private LocalDateTime dataHoraPedido;
     private LocalDateTime dataHoraEntrega;
+    @Column (length = 20, nullable = false)
     private String status;
     private boolean codStatus;
 
