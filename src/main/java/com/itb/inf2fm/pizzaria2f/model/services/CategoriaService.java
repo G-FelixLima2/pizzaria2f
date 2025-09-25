@@ -1,5 +1,6 @@
 package com.itb.inf2fm.pizzaria2f.model.services;
 
+import com.itb.inf2fm.pizzaria2f.model.entity.Categoria;
 import com.itb.inf2fm.pizzaria2f.model.entity.Produto;
 import com.itb.inf2fm.pizzaria2f.model.repository.CategoriaRepository;
 import com.itb.inf2fm.pizzaria2f.model.repository.ProdutoRepository;
@@ -10,48 +11,39 @@ import java.util.List;
 
 @Service
 public class CategoriaService {
-    @Autowired //Injeção de Dependencia
-    private CategoriaRepository categoriaRepository;
+
     @Autowired
-    private ProdutoRepository produtoRepository;
+    private CategoriaRepository categoriaRepository;
 
-    // Listar todos os produtos
-
-    public List<Produto> findAll() {
-        return produtoRepository.findAll();
+    // Listar Categorias
+    public List<Categoria> findAll() {
+        return categoriaRepository.findAll();
     }
 
-    // Salvar produto
-
-    public Produto save(Produto produto) {
-        produto.setCodStatus(true);
-        return produtoRepository.save(produto);
+    //Salvar categoria
+    public Categoria save(Categoria categoria) {
+        categoria.setCod_status(true);
+        return categoriaRepository.save(categoria);
     }
 
-    // Listar produto por ID
-
-    public Produto findById(Long id) {
-        return produtoRepository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Produto não encontrado com id" + id));
+    //Lisat categorias por ID
+    public Categoria findById(Long id) {
+        return categoriaRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException("Categoria não encontrada com id" + id));
     }
 
-    // Atualizar Produto
-
-    public Produto update (Long id, Produto produto) {
-        Produto produtoExistente = findById(id);
-        produtoExistente.setNome(produto.getNome());
-        produtoExistente.setDescricao(produto.getDescricao());
-        produtoExistente.setValorVenda(produto.getValorVenda());
-        produtoExistente.setValorCompra(produto.getValorCompra());
-        produtoExistente.setTipo(produto.getTipo());
-        produtoExistente.setQuantidadeEstoque(produto.getQuantidadeEstoque());
-        return produtoRepository.save(produtoExistente);
+    //Atualizar Categoria
+    public Categoria update(Long id, Categoria categoria) {
+        Categoria categoriaExistente = findById(id);
+        categoriaExistente.setNome(categoria.getNome());
+        categoriaExistente.setDecricao(categoria.getDecricao());
+        return categoriaRepository.save(categoriaExistente);
     }
 
-    // Excluir Produto
-
-    public void delete (Long id) {
-        Produto produtoExistente = findById(id);
-        produtoRepository.delete(produtoExistente);
+    //Excluir Categoria
+    public void delete(Long id) {
+        Categoria categoriaExistente = findById(id);
+        categoriaRepository.delete(categoriaExistente);
     }
 }
+
